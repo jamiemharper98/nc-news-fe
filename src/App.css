@@ -69,6 +69,8 @@ h1 {
 
 h2 {
   font-size: 24px;
+  padding: 5px 0;
+  margin: 5px;
 }
 
 h3 {
@@ -191,12 +193,12 @@ p {
 }
 
 .comment-card {
-  display: grid;
   grid-template-areas: "author date" "body body" "votes votes";
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   height: max-content;
-  margin: 10px;
+  width: 80vw;
+  margin: 20px auto;
   border-radius: 8px;
   padding: 5px 10px;
 }
@@ -206,10 +208,26 @@ p {
 }
 .cc-date {
   grid-area: date;
+  text-align: end;
 }
 .cc-body {
   grid-area: body;
 }
 .cc-votes {
   grid-area: votes;
+}
+
+.new-comment {
+  display: grid;
+  width: 80vw;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.new-comment > button {
+  display: flex;
+  min-width: 200px;
+  max-width: 300px;
+  justify-content: center;
 }
