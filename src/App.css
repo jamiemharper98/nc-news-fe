@@ -118,6 +118,11 @@ p {
   margin-left: 10px;
 }
 
+.arrow-up {
+  height: 30px;
+  padding: 5px;
+}
+
 .card {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -128,6 +133,48 @@ p {
   margin: 10px;
   border-radius: 8px;
   padding: 5px 10px;
+}
+
+.single-card {
+  display: grid;
+  grid-template-areas: "topic date" "title title" "author ." "img img" "body body" "votes votes";
+  height: fit-content;
+  width: 80vw;
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.topic {
+  grid-area: topic;
+}
+
+.date {
+  grid-area: date;
+  text-align: end;
+}
+
+.title {
+  grid-area: title;
+}
+
+.author {
+  grid-area: author;
+}
+
+.single-img {
+  grid-area: img;
+  width: 100%;
+}
+
+.single-body {
+  grid-area: body;
+}
+
+.single-votes {
+  grid-area: votes;
 }
 
 .small-img {
