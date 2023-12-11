@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles } from "../api/api";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function ArticlesPage() {
+  const location = useLocation();
+  const topic = location.state?.topic || null
+
   const [articles, setArticles] = useState({});
-  const [query, setQuery] = useState({ p: 1 });
+  const [query, setQuery] = useState({ p: 1, topic: topic });
   const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     getArticles(query).then((data) => {
