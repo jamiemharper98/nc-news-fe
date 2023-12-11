@@ -1,21 +1,23 @@
 import { createDate } from "../utils/utils";
+import dayjs from "dayjs";
+import * as relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 export default function ArticleCard({ article }) {
   return (
-    <section className="card">
-      <div className="left">
+    <article className="card">
+      <section className="left">
         <p className="underline">{article.topic}</p>
         <h3>{article.title}</h3>
         <p>by {article.author}</p>
-        <p>created {createDate(article.created_at)}</p>
+        <p>{dayjs().to(dayjs(article.created_at))}</p>
         <p>
-          Votes: {article.votes} <button className="button-circle">+</button>
+          {article.votes} <button className="button-circle">+</button>
         </p>
-      </div>
-      <div className="right">
-        <img src={article.article_img_url} className="small-img" />
-      </div>
+      </section>
+      <img src={article.article_img_url} className="small-img" />
       <button className="add-comment button-rectangle">Add Comment</button>
-    </section>
+    </article>
   );
 }
+<image></image>;
