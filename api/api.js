@@ -15,3 +15,6 @@ export const getCommentsByArticleId = (articleId) => {
 export const updateVotes = (articleId, voteChange) => {
   return newsApi.patch(`/articles/${articleId}`, voteChange).then(({ data }) => console.log(data));
 };
+export const getArticleById = (articleId) => {
+  return newsApi.get(`/articles/${articleId}`).then(({data : {article}}) => article)
+} 
