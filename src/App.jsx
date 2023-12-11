@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import ArticlesPage from "../pages/ArticlesPage";
+import SingleArticlePage from "../pages/SingleArticlePage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/articles/:article_id" element={<SingleArticlePage />} />
       </Routes>
     </div>
   );
