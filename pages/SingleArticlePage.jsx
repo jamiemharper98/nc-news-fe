@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticleById } from "../api/api";
 import SingleArticleCard from "../components/SingleArticleCard";
 
@@ -15,7 +15,7 @@ export default function SingleArticlePage() {
     });
   }, []);
 
-  if (isLoading) <h2>Loadin...</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <>

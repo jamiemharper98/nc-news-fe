@@ -147,20 +147,20 @@ p {
   padding: 5px 10px;
 }
 
-.topic {
+.single-topic {
   grid-area: topic;
 }
 
-.date {
+.single-date {
   grid-area: date;
   text-align: end;
 }
 
-.title {
+.single-title {
   grid-area: title;
 }
 
-.author {
+.single-author {
   grid-area: author;
 }
 
