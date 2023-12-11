@@ -9,10 +9,10 @@ export default function AddComment(props) {
     e.preventDefault();
     postCommentByArticleId(props.article_id, { username: username, body: newComment });
     props.setComments((currComments) => {
-      const createComment = { author: username, date: Date.now(), body: newComment, votes: 0 };
+      const createComment = { author: username, date: Date.now(), body: newComment, votes: 0, comment_id: Date.now() };
       return [createComment, ...currComments];
     });
-    props.setNewComment(true);
+    setNewComment("");
   }
 
   return (

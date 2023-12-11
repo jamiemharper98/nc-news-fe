@@ -193,6 +193,7 @@ p {
 }
 
 .comment-card {
+  display: grid;
   grid-template-areas: "author date" "body body" "votes votes";
   background-color: var(--bg-con);
   border: 2px solid var(--blue);

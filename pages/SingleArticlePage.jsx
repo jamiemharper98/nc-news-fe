@@ -10,19 +10,17 @@ export default function SingleArticlePage() {
   const [currArticle, setCurrArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((articleData) => {
-      setCurrArticle(articleData);
-      setIsLoading(false);
-    });
-  }, []);
-
-  useEffect(() => {
-    getCommentsByArticleId(article_id).then((commentData) => {
-      setComments(commentData);
-    });
+    getArticleById(article_id)
+      .then((articleData) => {
+        setCurrArticle(articleData);
+        setIsLoading(false);
+        return getCommentsByArticleId(article_id);
+      })
+      .then((commentData) => {
+        setComments(commentData);
+      });
   }, []);
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -32,7 +30,7 @@ export default function SingleArticlePage() {
       <SingleArticleCard currArticle={currArticle} />
 
       <h2>Comments</h2>
-      <AddComment article_id={article_id} setComments={setComments} setNewComment={setNewComment}/>
+      <AddComment article_id={article_id} setComments={setComments} />
       {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id} />;
       })}
