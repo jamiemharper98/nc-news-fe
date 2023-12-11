@@ -142,3 +142,27 @@ p {
   grid-column: 1/3;
   height: fit-content;
 }
+
+.comment-card {
+  display: grid;
+  grid-template-areas: "author date" "body body" "votes votes";
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+  height: max-content;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.cc-author {
+  grid-area: author;
+}
+.cc-date {
+  grid-area: date;
+}
+.cc-body {
+  grid-area: body;
+}
+.cc-votes {
+  grid-area: votes;
+}
