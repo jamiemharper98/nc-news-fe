@@ -85,6 +85,12 @@ p {
   margin: 5px;
 }
 
+textarea {
+  text-wrap: wrap;
+  height: 65px;
+  width: 273px;
+}
+
 .button-rectangle {
   display: grid;
   grid-template-columns: auto auto;
@@ -134,11 +140,10 @@ p {
   padding: 5px;
 }
 
-.card {
+.article-card {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 85% 15%;
-  height: 40vh;
+  height: 35vh;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   margin: 10px;
@@ -213,10 +218,55 @@ p {
   grid-area: body;
 }
 
-.red {
-  background-color: var(--red);
+.comment-card {
+  display: grid;
+  grid-template-areas: "author date" "body body" "votes votes";
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+  height: max-content;
+  width: 80vw;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
 }
 
+.cc-author {
+  grid-area: author;
+}
+.cc-date {
+  grid-area: date;
+  text-align: end;
+}
+.cc-body {
+  grid-area: body;
+}
+.cc-votes {
+  grid-area: votes;
+}
+
+.new-comment {
+  display: grid;
+  width: 80vw;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.new-comment > button {
+  display: flex;
+  min-width: 200px;
+  max-width: 300px;
+  justify-content: center;
+}
+
+.disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
 .no-display {
   display: none;
+}
+
+.red {
+  background-color: var(--red);
 }

@@ -4,10 +4,10 @@ dayjs.extend(relativeTime);
 
 export default function ArticleCard({ article }) {
   return (
-    <article className="card">
-      <section className="left">
+    <article className="article-card">
+      <section>
         <p className="underline">{article.topic}</p>
-        <h3>{article.title}</h3>
+        <h3 className="ac-title">{article.title}</h3>
         <p>by {article.author}</p>
         <p>{dayjs().to(dayjs(article.created_at))}</p>
         <p>
@@ -15,7 +15,6 @@ export default function ArticleCard({ article }) {
         </p>
       </section>
       <img src={article.article_img_url} className="small-img" />
-      <button className="add-comment button-rectangle">Add Comment</button>
     </article>
   );
 }

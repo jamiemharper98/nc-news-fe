@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getArticleById, getCommentsByArticleId } from "../api/api";
 import SingleArticleCard from "../components/SingleArticleCard";
 import CommentCard from "../components/CommentCard";
+import AddComment from "../components/AddComment";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
@@ -28,6 +29,7 @@ export default function SingleArticlePage() {
     <>
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
+      <AddComment article_id={article_id} setComments={setComments} />
       {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id} />;
       })}
