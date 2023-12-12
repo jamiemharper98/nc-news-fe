@@ -69,6 +69,8 @@ h1 {
 
 h2 {
   font-size: 24px;
+  padding: 5px 0;
+  margin: 5px;
 }
 
 h3 {
@@ -81,6 +83,12 @@ p {
   font-size: 18px;
   padding: 5px 0;
   margin: 5px;
+}
+
+textarea {
+  text-wrap: wrap;
+  height: 65px;
+  width: 273px;
 }
 
 .button-rectangle {
@@ -109,14 +117,18 @@ p {
   margin-left: 25px;
 }
 
-.red {
-  background-color: var(--red);
-}
-
 .arrow {
   height: 3vh;
   width: 5vw;
   margin-left: 10px;
+}
+
+.single-article-vote {
+  background-color: var(--green);
+  color: white;
+  border-radius: 100%;
+  width: fit-content;
+  margin: 15px;
 }
 
 .arrow-up {
@@ -124,11 +136,15 @@ p {
   padding: 5px;
 }
 
-.card {
+.arrow-down {
+  height: 30px;
+  padding: 5px;
+}
+
+.article-card {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 85% 15%;
-  height: 40vh;
+  min-height: 35vh;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   margin: 10px;
@@ -184,11 +200,81 @@ p {
   border: 1px solid var(--blue);
 }
 
-.add-comment {
+.comment-card {
+  display: grid;
+  grid-template-areas: "author date" "body body" "votes votes";
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+  height: max-content;
+  width: 80vw;
+  margin: 20px 20px 20px 20px;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+.cc-date {
+  grid-area: date;
+  text-align: end;
+}
+.cc-body {
+  grid-area: body;
+}
+
+.comment-card {
+  display: grid;
+  grid-template-areas: "author date" "body body" "votes votes";
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+  height: max-content;
+  width: 80vw;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.cc-author {
+  grid-area: author;
+}
+.cc-date {
+  grid-area: date;
+  text-align: end;
+}
+.cc-body {
+  grid-area: body;
+}
+.cc-votes {
+  grid-area: votes;
+}
+
+.new-comment {
+  display: grid;
+  width: 80vw;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.new-comment > button {
   display: flex;
-  margin: auto;
-  grid-column: 1/3;
-  height: fit-content;
+  min-width: 200px;
+  max-width: 300px;
+  justify-content: center;
+}
+
+.disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
+.no-display {
+  display: none;
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.delete-button {
+  background-color: var(--red);
+  font-size: 40px;
 }
 
 .topic-card {
