@@ -25,5 +25,5 @@ export const changeArticleVotes = (articleId, votesChange) => {
 };
 
 export const deleteCommentByCommentId = (commentId) => {
-  return newsApi.delete(`comments/${commentId}`);
+  return newsApi.delete(`comments/${commentId}`).then(() => {});
 };
