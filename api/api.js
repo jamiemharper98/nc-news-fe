@@ -19,3 +19,7 @@ export const getArticleById = (articleId) => {
 export const postCommentByArticleId = (articleId, newComment) => {
   return newsApi.post(`/articles/${articleId}/comments`, newComment).then(({ data: { comment } }) => comment);
 };
+export const changeArticleVotes = (articleId, votesChange) => {
+  return newsApi.patch(`/articles/${articleId}`, votesChange).then(({ data: { article } }) => article);
+};
+
