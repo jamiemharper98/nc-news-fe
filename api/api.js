@@ -9,5 +9,9 @@ export const getArticles = ({ query }) => {
 };
 
 export const getArticleById = (articleId) => {
-  return newsApi.get(`/articles/${articleId}`).then(({data : {article}}) => article)
-} 
+  return newsApi.get(`/articles/${articleId}`).then(({ data: { article } }) => article);
+};
+
+export const changeArticleVotes = (articleId, votesChange) => {
+  return newsApi.patch(`/articles/${articleId}`, votesChange).then(({ data: { article } }) => article);
+};

@@ -19,7 +19,7 @@ export default function SingleArticlePage() {
 
   return (
     <>
-      <SingleArticleCard currArticle={currArticle} />
+      <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
     </>
   );
 }
