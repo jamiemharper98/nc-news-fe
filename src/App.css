@@ -108,7 +108,6 @@ p {
   margin-left: 25px;
 }
 
-
 .arrow {
   height: 3vh;
   width: 5vw;
@@ -122,7 +121,6 @@ p {
   width: fit-content;
   margin: 25px;
 }
-
 
 .arrow-up {
   height: 30px;
@@ -203,4 +201,8 @@ p {
 
 .red {
   background-color: var(--red);
+}
+
+.no-display {
+  display: none;
 }

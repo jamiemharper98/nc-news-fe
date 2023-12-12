@@ -3,12 +3,26 @@ import * as relativeTime from "dayjs/plugin/relativeTime";
 import upArrow from "../assets/icons/arrow-up.svg";
 import downArrow from "../assets/icons/arrow-down.svg";
 import { changeArticleVotes } from "../api/api";
+import { useState } from "react";
 dayjs.extend(relativeTime);
 
 export default function SingleArticleCard({ currArticle, setCurrArticle }) {
+  const [failedVote, setFailedVote] = useState(false);
+
   function changeVotes(e) {
     const changeVotes = e.target.name === "downvote" ? -1 : 1;
-    changeArticleVotes(currArticle.article_id, { inc_votes: changeVotes });
+    changeArticleVotes(currArticle.article_id, { inc_votes: changeVotes })
+      .then(() => {
+        setFailedVote(false);
+      })
+      .catch(() => {
+        setFailedVote(true);
+        setCurrArticle((currArticle) => {
+          const updatedArticle = { ...currArticle };
+          updatedArticle.votes -= changeVotes;
+          return updatedArticle;
+        });
+      });
     setCurrArticle((currArticle) => {
       const updatedArticle = { ...currArticle };
       updatedArticle.votes += changeVotes;
@@ -32,6 +46,7 @@ export default function SingleArticleCard({ currArticle, setCurrArticle }) {
         <button className="single-article-vote" name="upvote" onClick={changeVotes}>
           <img src={upArrow} className="arrow-up" name="upvote" />
         </button>
+        <p className={failedVote || "no-display"}>Your vote has not gone through!</p>
       </p>
     </article>
   );
