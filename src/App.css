@@ -69,6 +69,8 @@ h1 {
 
 h2 {
   font-size: 24px;
+  padding: 5px 0;
+  margin: 5px;
 }
 
 h3 {
@@ -190,22 +192,14 @@ p {
   border: 2px solid var(--blue);
   height: max-content;
   width: 80vw;
-  margin: 20px auto;
+  margin: 20px 20px 20px 20px;
   border-radius: 8px;
   padding: 5px 10px;
-  }
-
-.cc-author {
-  grid-area: author;
-  }
-  .cc-date {
+}
+.cc-date {
   grid-area: date;
   text-align: end;
-  }
-  .cc-body {
+}
+.cc-body {
   grid-area: body;
-  }
-  .cc-votes {
-  grid-area: votes;
-  }
-  
+}
