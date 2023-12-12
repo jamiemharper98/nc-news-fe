@@ -11,3 +11,7 @@ export const getArticles = (query) => {
 export const getArticleById = (articleId) => {
   return newsApi.get(`/articles/${articleId}`).then(({ data: { article } }) => article);
 };
+
+export const getTopics = () => {
+  return newsApi.get("/topics").then(({ data: { topics } }) => topics);
+};

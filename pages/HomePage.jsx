@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import rightArrow from "../assets/icons/arrow-right.svg";
+import { useEffect, useState } from "react";
+import { getTopics } from "../api/api";
+import TopicCard from "../components/TopicCard";
 
 export default function HomePage() {
-  const navigate = useNavigate();
+  const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  function selectTopic(e) {
-    navigate("/articles", { state: { topic: e.target.innerText.toLowerCase() } });
-  }
+
+
+  useEffect(() => {
+    getTopics().then((topicData) => {
+      setTopics(topicData);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <main>
@@ -17,15 +27,9 @@ export default function HomePage() {
         </button>
       </Link>
 
-      <div onClick={selectTopic}>
-        <p>Coding</p>
-      </div>
-      <div onClick={selectTopic}>
-        <p>Cooking</p>
-      </div>
-      <div onClick={selectTopic}>
-        <p>Football</p>
-      </div>
+      {topics.map((topic) => {
+        return <TopicCard topic={topic} key={topic.slug} />;
+      })}
     </main>
   );
 }
