@@ -10,6 +10,8 @@ export default function SingleArticlePage() {
   const [currArticle, setCurrArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [deleteError, setDeleteError] = useState(false);
+  const currentUser = "jessjelly";
 
   useEffect(() => {
     getArticleById(article_id)
@@ -29,9 +31,21 @@ export default function SingleArticlePage() {
     <>
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
-      <AddComment article_id={article_id} setComments={setComments} />
-      {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />;
+      <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} />
+      <p className={`${deleteError || "no-display"}`}>
+        An Error has occured with the deleting of a comment! Please try again later!
+      </p>
+      {comments.map((comment, i) => {
+        return (
+          <CommentCard
+            comment={comment}
+            key={comment.comment_id}
+            i={i}
+            currentUser={currentUser}
+            setComments={setComments}
+            setDeleteError={setDeleteError}
+          />
+        );
       })}
     </>
   );
