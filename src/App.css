@@ -87,7 +87,8 @@ p {
 
 textarea {
   text-wrap: wrap;
-  height: 50px;
+  height: 65px;
+  width: 273px;
 }
 
 .button-rectangle {
@@ -130,11 +131,10 @@ textarea {
   padding: 5px;
 }
 
-.card {
+.article-card {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 85% 15%;
-  height: 40vh;
+  height: 35vh;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   margin: 10px;

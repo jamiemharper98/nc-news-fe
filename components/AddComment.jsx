@@ -45,7 +45,9 @@ export default function AddComment(props) {
         <textarea placeholder="A new comment..." id="new-comment" value={newComment} onChange={validateComment} />
       </label>
       <button className={`button-rectangle ${validation || "disabled"}`}>Add</button>
-      <p className={`${failedComment || "no-display"}`}>Your comment has failed to post!</p>
+      <p className={`${failedComment || "no-display"}`}>
+        An error has occured! Your comment has not been posted, please try again later!
+      </p>
     </form>
   );
 }
