@@ -5,14 +5,14 @@ export default function AddComment(props) {
   const [newComment, setNewComment] = useState("");
   const [validation, setValidation] = useState(false);
   const [failedComment, setFailedComment] = useState(false);
-  const username = "jessjelly";
 
   function createNewComment(e) {
     e.preventDefault();
     if (validation) {
-      postCommentByArticleId(props.article_id, { username: username, body: newComment })
-        .then(() => {
+      postCommentByArticleId(props.article_id, { username: props.currentUser, body: newComment })
+        .then((commentData) => {
           setFailedComment(false);
+          props.setComments((currComments) => [commentData, ...currComments.slice(1)]);
         })
         .catch(() => {
           setFailedComment(true);
@@ -20,7 +20,7 @@ export default function AddComment(props) {
         });
       props.setComments((currComments) => {
         const createComment = {
-          author: username,
+          author: props.currentUser,
           date: Date.now(),
           body: newComment,
           votes: 0,

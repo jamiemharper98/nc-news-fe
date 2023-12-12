@@ -127,7 +127,7 @@ textarea {
   color: white;
   border-radius: 100%;
   width: fit-content;
-  margin: 25px;
+  margin: 15px;
 }
 
 .arrow-up {
@@ -269,4 +269,9 @@ textarea {
 
 .red {
   background-color: var(--red);
+}
+
+.delete-button {
+  background-color: var(--red);
+  font-size: 40px;
 }

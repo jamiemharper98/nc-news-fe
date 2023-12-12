@@ -10,6 +10,7 @@ export default function SingleArticlePage() {
   const [currArticle, setCurrArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const currentUser = "jessjelly";
 
   useEffect(() => {
     getArticleById(article_id)
@@ -29,9 +30,9 @@ export default function SingleArticlePage() {
     <>
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
-      <AddComment article_id={article_id} setComments={setComments} />
+      <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} />
       {comments.map((comment) => {
-        return <CommentCard comment={comment} key={comment.comment_id} />;
+        return <CommentCard comment={comment} key={comment.comment_id} currentUser={currentUser} setComments={setComments}/>;
       })}
     </>
   );
