@@ -110,17 +110,26 @@ p {
   margin-left: 25px;
 }
 
-.red {
-  background-color: var(--red);
-}
-
 .arrow {
   height: 3vh;
   width: 5vw;
   margin-left: 10px;
 }
 
+.single-article-vote {
+  background-color: var(--green);
+  color: white;
+  border-radius: 100%;
+  width: fit-content;
+  margin: 25px;
+}
+
 .arrow-up {
+  height: 30px;
+  padding: 5px;
+}
+
+.arrow-down {
   height: 30px;
   padding: 5px;
 }
@@ -202,4 +211,12 @@ p {
 }
 .cc-body {
   grid-area: body;
+}
+
+.red {
+  background-color: var(--red);
+}
+
+.no-display {
+  display: none;
 }

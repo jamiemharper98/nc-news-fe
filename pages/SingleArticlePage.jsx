@@ -26,7 +26,7 @@ export default function SingleArticlePage() {
 
   return (
     <>
-      <SingleArticleCard currArticle={currArticle} />
+      <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
       {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id} />;
