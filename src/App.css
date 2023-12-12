@@ -251,6 +251,10 @@ textarea {
 }
 
 .disabled {
-  opacity:0.8;
+  opacity: 0.8;
   pointer-events: none;
+}
+
+.no-display {
+  display: none;
 }
