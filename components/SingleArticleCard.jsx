@@ -38,7 +38,7 @@ export default function SingleArticleCard({ currArticle, setCurrArticle }) {
       <p className="single-author">by {currArticle.author}</p>
       <p className="single-body">{currArticle.body}</p>
       <img src={currArticle.article_img_url} className="single-img" />
-      <p className="single-votes">
+      <label className="single-votes">
         <button className="single-article-vote red" name="downvote" onClick={changeVotes}>
           <img src={downArrow} className="arrow-down" name="downvote" />
         </button>
@@ -47,7 +47,7 @@ export default function SingleArticleCard({ currArticle, setCurrArticle }) {
           <img src={upArrow} className="arrow-up" name="upvote" />
         </button>
         <p className={failedVote || "no-display"}>Your vote has not gone through!</p>
-      </p>
+      </label>
     </article>
   );
 }
