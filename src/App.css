@@ -88,6 +88,7 @@ p {
   grid-template-columns: auto auto;
   padding: 8px 12px;
   background-color: var(--green);
+  border: 1px solid var(--blue);
   color: white;
   margin: 10px;
 
@@ -200,4 +201,29 @@ p {
 .topic-card > h2 {
   text-align: center;
   text-decoration: underline;
+}
+
+.no-display {
+  display: none;
+}
+
+.dropdown-topic button {
+  padding: 8px 12px;
+  background-color: var(--green);
+  border: 1px solid var(--blue);
+  color: white;
+  margin: 10px;
+  font-weight: 900;
+  font-size: 18px;
+  border-radius: 30px;
+}
+
+.dropdown-topic div {
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+}
+
+.dropdown-topic a:hover {
+  background-color: var(--green);
+  transform: scale(1.2);
 }
