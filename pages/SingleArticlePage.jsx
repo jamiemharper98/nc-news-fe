@@ -13,8 +13,8 @@ export default function SingleArticlePage() {
 
   useEffect(() => {
     getArticleById(article_id)
-      .then((articleData) => {
-        setCurrArticle(articleData);
+      .then((data) => {
+        setCurrArticle(data);
         setIsLoading(false);
         return getCommentsByArticleId(article_id);
       })
@@ -28,8 +28,7 @@ export default function SingleArticlePage() {
   return (
     <>
       <SingleArticleCard currArticle={currArticle} />
-
-      <h2>Comments</h2>
+      <h2>{!comments.length ? "No " : ""}Comments</h2>
       <AddComment article_id={article_id} setComments={setComments} />
       {comments.map((comment) => {
         return <CommentCard comment={comment} key={comment.comment_id} />;
