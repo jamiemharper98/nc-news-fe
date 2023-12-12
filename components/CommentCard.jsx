@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+
 export default function CommentCard({ comment }) {
   return (
     <section className="comment-card">
