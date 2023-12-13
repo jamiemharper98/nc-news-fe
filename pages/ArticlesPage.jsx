@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles, getTopics } from "../api/api";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DropDownTopics from "../components/DropDownTopics";
 
 export default function ArticlesPage() {
-  const location = useLocation();
-  const topic = location.state?.topic || null;
+  const { topic } = useParams();
 
   const [articles, setArticles] = useState({});
   const [query, setQuery] = useState({ p: 1, topic: topic });
