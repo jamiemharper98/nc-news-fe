@@ -1,7 +1,24 @@
 import { Link } from "react-router-dom";
 import rightArrow from "../assets/icons/arrow-right.svg";
+import { useEffect, useState } from "react";
+import { getTopics } from "../api/api";
+import TopicCard from "../components/TopicCard";
 
 export default function HomePage() {
+  const [topics, setTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+
+  useEffect(() => {
+    getTopics().then((topicData) => {
+      setTopics(topicData);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) return <h2>Loading...</h2>;
+
   return (
     <main>
       <Link to="/articles" className="no-underline">
@@ -9,9 +26,10 @@ export default function HomePage() {
           All Articles <img src={rightArrow} className="arrow" />
         </button>
       </Link>
-      <p>topic</p>
-      <p>topic</p>
-      <p>topic</p>
+
+      {topics.map((topic) => {
+        return <TopicCard topic={topic} key={topic.slug} />;
+      })}
     </main>
   );
 }
