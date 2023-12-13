@@ -10,7 +10,7 @@ export default function ArticlesPage() {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const [articles, setArticles] = useState({});
-  const [query, setQuery] = useState({ p: 1, topic: topic, order: "desc", sort_by: null });
+  const [query, setQuery] = useState(createQueryFromUrl([...searchParams]));
   const [isLoading, setIsLoading] = useState(true);
   const [topics, setTopics] = useState([]);
   const [queryError, setQueryError] = useState(false);
@@ -48,17 +48,23 @@ export default function ArticlesPage() {
     return urlQ;
   }
 
+  function createQueryFromUrl(urlQuery) {
+    const query = { p: 1, topic: topic, order: "desc", sort_by: null };
+    urlQuery.forEach((q) => (query[q[0]] = q[1]));
+    return query;
+  }
+
   if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <main>
-      <DropDownTopics topics={topics} setQuery={setQuery} />
-      <DropDownSort setQuery={setQuery} />
+      <DropDownTopics topics={topics} setQuery={setQuery} query={query} />
+      <DropDownSort setQuery={setQuery} query={query} />
       <label>
-        <button className="button-rectangle" onClick={changeOrder}>
+        <button className="order-button" onClick={changeOrder}>
           Change Order :
         </button>
-        {query.order === "desc" ? "Descending" : "Ascending"}
+        <p>{query.order === "desc" ? "Descending" : "Ascending"}</p>
       </label>
       <p className={`${queryError || "no-display"}`}>An Error has occured with your query. Please try again later!</p>
       {articles.listOfArticles.map((article) => {

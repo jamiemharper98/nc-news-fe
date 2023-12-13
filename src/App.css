@@ -92,8 +92,14 @@ textarea {
 }
 
 label {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   align-items: center;
+}
+
+label > p {
+  text-align: end;
 }
 
 .button-rectangle {
@@ -298,15 +304,17 @@ label {
   display: none;
 }
 
-.dropdown-topic button {
-  padding: 8px 12px;
+.dropdown-topic button,
+.order-button {
+  padding: 8px 8px;
   background-color: var(--green);
   border: 1px solid var(--blue);
   color: white;
-  margin: 10px;
+  margin: 10px 5px 10px 10px;
   font-weight: 900;
   font-size: 18px;
   border-radius: 30px;
+  width: max-content;
 }
 
 .dropdown-topic div {
