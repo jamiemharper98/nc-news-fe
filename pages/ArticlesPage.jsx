@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ArticlesPage() {
   const [articles, setArticles] = useState({});
-  const [query, setQuery] = useState({ p: 1 });
+  const [query, setQuery] = useState({ p: 1, order: "desc" });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -13,14 +13,27 @@ export default function ArticlesPage() {
       setIsLoading(false);
       setArticles({ listOfArticles: data.articles, articleCount: data.total_count });
     });
-  }, []);
+  }, [query]);
+
+  function changeOrder() {
+    setQuery((currQuery) => {
+      const updatedQuery = { ...currQuery };
+      updatedQuery.order = currQuery.order === "desc" ? "asc" : "desc";
+      return updatedQuery;
+    });
+  }
 
   if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <main>
       <button className="button-rectangle">Sort By</button>
-      <button className="button-rectangle">Change Order</button>
+      <label>
+        <button className="button-rectangle" onClick={changeOrder}>
+          Change Order :
+        </button>
+        {query.order === "desc" ? "Descending" : "Ascending"}
+      </label>
       {articles.listOfArticles.map((article) => {
         return (
           <Link to={`/articles/${article.article_id}`} className="no-underline" key={article.article_id}>

@@ -91,6 +91,11 @@ textarea {
   width: 273px;
 }
 
+label {
+  display: flex;
+  align-items: center;
+}
+
 .button-rectangle {
   display: grid;
   grid-template-columns: auto auto;
