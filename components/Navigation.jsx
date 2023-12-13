@@ -7,8 +7,8 @@ export default function Navigation() {
         <h1 className="logo">NC News</h1>
       </Link>
 
-      <button>Create new article</button>
-      <p>Profile</p>
+      {/* <button>Create new article</button>
+      <p>Profile</p> */}
     </header>
   );
 }

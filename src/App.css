@@ -96,6 +96,7 @@ textarea {
   grid-template-columns: auto auto;
   padding: 8px 12px;
   background-color: var(--green);
+  border: 1px solid var(--blue);
   color: white;
   margin: 10px;
 
@@ -143,7 +144,7 @@ textarea {
 .article-card {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: 35vh;
+  min-height: 35vh;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   margin: 10px;
@@ -274,4 +275,41 @@ textarea {
 .delete-button {
   background-color: var(--red);
   font-size: 40px;
+}
+
+.topic-card {
+  border: 2px solid var(--blue);
+  margin: 10px 25px;
+  border-radius: 12px;
+  background-color: var(--bg-con);
+}
+
+.topic-card > h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.no-display {
+  display: none;
+}
+
+.dropdown-topic button {
+  padding: 8px 12px;
+  background-color: var(--green);
+  border: 1px solid var(--blue);
+  color: white;
+  margin: 10px;
+  font-weight: 900;
+  font-size: 18px;
+  border-radius: 30px;
+}
+
+.dropdown-topic div {
+  background-color: var(--bg-con);
+  border: 2px solid var(--blue);
+}
+
+.dropdown-topic a:hover {
+  background-color: var(--green);
+  transform: scale(1.2);
 }
