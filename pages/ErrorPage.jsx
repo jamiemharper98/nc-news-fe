@@ -1,15 +1,26 @@
 import { MdError } from "react-icons/md";
 import ErrorMessage from "../components/ErrorMessage";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
-export default function ErrorPage({ err }) {
+export default function ErrorPage(props) {
+  const navigate = useNavigate();
   return (
     <section className="error-page">
-      <ErrorMessage err={err} />
+      <ErrorMessage err={props.err} />
       <MdError className="error-icon" />
-      <Link to="/" className="no-underline">
-        <button>Return to Home Page</button>
-      </Link>
+
+      <button
+        onClick={(e) => {
+          if (e.target.innerText.includes("Articles")) {
+            props.setIsLoading(true);
+            props.setGetError(null);
+            props.setQuery(props.createQueryFromUrl([]));
+          }
+          navigate(props.err === "query" ? "/articles" : "/");
+        }}
+      >
+        Return to {props.err === "query" ? "Articles" : "Home"} Page
+      </button>
     </section>
   );
 }

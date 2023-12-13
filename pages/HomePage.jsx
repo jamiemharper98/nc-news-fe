@@ -20,7 +20,7 @@ export default function HomePage() {
   if (isLoading) return <h2>Loading...</h2>;
 
   return (
-    <main>
+    <main className="home-page">
       <Link to="/articles" className="no-underline">
         <button className="button-rectangle">
           All Articles <img src={rightArrow} className="arrow" />

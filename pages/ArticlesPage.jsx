@@ -38,6 +38,7 @@ export default function ArticlesPage() {
     setQuery((currQuery) => {
       const updatedQuery = { ...currQuery };
       updatedQuery.order = currQuery.order === "desc" ? "asc" : "desc";
+
       return updatedQuery;
     });
   }
@@ -58,7 +59,10 @@ export default function ArticlesPage() {
 
   if (isLoading) return <h2>Loading...</h2>;
 
-  if (getError) return <ErrorPage err={getError} />;
+  if (getError)
+    return (
+      <ErrorPage err="query" setGetError={setGetError} setQuery={setQuery} createQueryFromUrl={createQueryFromUrl} setIsLoading={setIsLoading} />
+    );
 
   return (
     <main>
@@ -71,15 +75,15 @@ export default function ArticlesPage() {
         <p>{query.order === "desc" ? "Descending" : "Ascending"}</p>
       </label>
       <p className={`${queryError || "no-display"}`}>An Error has occured with your query. Please try again later!</p>
-      {articles.listOfArticles.map((article) => {
+      {articles.listOfArticles?.map((article) => {
         return (
           <Link to={`/articles/a/${article.article_id}`} className="no-underline" key={article.article_id}>
             <ArticleCard article={article} />
           </Link>
         );
       })}
-      <p>
-        Page {query.p} of {Math.ceil(articles.articleCount / articles.listOfArticles.length)}
+      <p className="page-count">
+        Page {query.p} of {Math.ceil(articles.articleCount / articles.listOfArticles?.length)}
       </p>
     </main>
   );
