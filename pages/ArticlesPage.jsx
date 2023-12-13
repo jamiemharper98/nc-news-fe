@@ -61,19 +61,26 @@ export default function ArticlesPage() {
 
   if (getError)
     return (
-      <ErrorPage err="query" setGetError={setGetError} setQuery={setQuery} createQueryFromUrl={createQueryFromUrl} setIsLoading={setIsLoading} />
+      <ErrorPage
+        err="query"
+        setGetError={setGetError}
+        setQuery={setQuery}
+        createQueryFromUrl={createQueryFromUrl}
+        setIsLoading={setIsLoading}
+      />
     );
 
   return (
-    <main>
-      <DropDownTopics topics={topics} setQuery={setQuery} query={query} />
-      <DropDownSort setQuery={setQuery} query={query} />
-      <label>
-        <button className="order-button" onClick={changeOrder}>
-          Change Order :
-        </button>
-        <p>{query.order === "desc" ? "Descending" : "Ascending"}</p>
-      </label>
+    <main className="articles-page">
+      <section className="query-options">
+        <DropDownTopics topics={topics} setQuery={setQuery} query={query} />
+        <DropDownSort setQuery={setQuery} query={query} />
+        <label>
+          <button onClick={changeOrder}>
+            {query.order === "desc" ? "Descending" : "Ascending"}
+          </button>
+        </label>
+      </section>
       <p className={`${queryError || "no-display"}`}>An Error has occured with your query. Please try again later!</p>
       {articles.listOfArticles?.map((article) => {
         return (

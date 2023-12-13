@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function DropDownTopics(props) {
   const navigate = useNavigate();
-  const {topic} = useParams()
+  const { topic } = useParams();
 
   function changeTopic(e) {
     const topic = e.target.id === "all" ? null : e.target.id;
@@ -16,7 +16,7 @@ export default function DropDownTopics(props) {
   }
   return (
     <label>
-      <DropdownButton id="dropdown-basic-button" title="Choose a topic" className="dropdown-topic">
+      <DropdownButton id="dropdown-basic-button" title={topic ? topic[0].toUpperCase() + topic.slice(1) : "All Topics"}>
         <Dropdown.Item id="all" onClick={changeTopic}>
           All Topics
         </Dropdown.Item>
@@ -29,7 +29,6 @@ export default function DropDownTopics(props) {
           );
         })}
       </DropdownButton>
-      <p>{topic ? topic[0].toUpperCase() + topic.slice(1) : 'All Articles'}</p>
     </label>
   );
 }
