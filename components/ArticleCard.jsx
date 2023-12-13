@@ -10,11 +10,10 @@ export default function ArticleCard({ article }) {
         <h3 className="ac-title">{article.title}</h3>
         <p>by {article.author}</p>
         <p>{dayjs().to(dayjs(article.created_at))}</p>
-        <p>
-          {article.votes} <button className="button-circle">+</button>
-        </p>
+        <p>Votes: {article.votes}</p>
       </section>
       <img src={article.article_img_url} className="small-img" />
+      <p> Comments: {article.comment_count}</p>
     </article>
   );
 }
