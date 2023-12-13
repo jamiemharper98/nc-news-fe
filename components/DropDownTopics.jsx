@@ -7,7 +7,9 @@ export default function DropDownTopics(props) {
 
   function changeTopic(e) {
     const topic = e.target.id === "all" ? null : e.target.id;
-    props.setQuery({ p: 1, topic: topic });
+    props.setQuery((currQuery) => {
+      return { ...currQuery, topic: topic };
+    });
     if (!topic) navigate("/articles");
     else navigate(`/articles/${e.target.id}`);
   }
