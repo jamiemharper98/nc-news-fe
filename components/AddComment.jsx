@@ -40,10 +40,9 @@ export default function AddComment(props) {
 
   return (
     <form onSubmit={createNewComment} className="new-comment">
-      <label htmlFor="new-comment">
-        Add Comment{" "}
-        <textarea placeholder="A new comment..." id="new-comment" value={newComment} onChange={validateComment} />
-      </label>
+      <label htmlFor="new-comment">Add Comment </label>
+      <textarea placeholder="A new comment..." id="new-comment" value={newComment} onChange={validateComment} />
+
       <button className={`button-rectangle ${validation || "disabled"}`}>Add</button>
       <p className={`${failedComment || "no-display"}`}>
         An error has occured! Your comment has not been posted, please try again later!

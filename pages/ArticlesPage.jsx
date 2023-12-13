@@ -4,21 +4,21 @@ import { getArticles, getTopics } from "../api/api";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import DropDownTopics from "../components/DropDownTopics";
 import DropDownSort from "../components/DropDownSort";
+import ErrorPage from "./ErrorPage";
 
 export default function ArticlesPage() {
   const { topic } = useParams();
   let [searchParams, setSearchParams] = useSearchParams();
-
   const [articles, setArticles] = useState({});
   const [query, setQuery] = useState(createQueryFromUrl([...searchParams]));
   const [isLoading, setIsLoading] = useState(true);
   const [topics, setTopics] = useState([]);
   const [queryError, setQueryError] = useState(false);
+  const [getError, setGetError] = useState(null);
 
   useEffect(() => {
     getArticles(query)
       .then((data) => {
-        setIsLoading(false);
         setArticles({ listOfArticles: data.articles, articleCount: data.total_count });
         return getTopics();
       })
@@ -27,9 +27,11 @@ export default function ArticlesPage() {
         setQueryError(false);
         setSearchParams(urlQuery());
       })
-      .catch(() => {
-        setQueryError(true);
-      });
+      .catch((err) => {
+        if (err.code === "ERR_NETWORK") setQueryError(true);
+        else setGetError(err);
+      })
+      .finally(() => setIsLoading(false));
   }, [query]);
 
   function changeOrder() {
@@ -55,6 +57,8 @@ export default function ArticlesPage() {
   }
 
   if (isLoading) return <h2>Loading...</h2>;
+
+  if (getError) return <ErrorPage err={getError} />;
 
   return (
     <main>

@@ -15,22 +15,22 @@ body {
 .wrapper {
   display: grid;
   height: 100vh;
-  width: 100vw;
   grid-template-rows: max-content auto;
 }
 
 .logo {
   color: var(--text);
+  margin: 0;
 }
 
 .nav {
-  padding: 8px;
   border-bottom: 2px solid black;
   background-color: var(--blue);
   color: var(--text);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+  height: max-content;
 }
 
 .nav > button {
@@ -46,7 +46,12 @@ body {
 main {
   margin: 0 auto;
   width: 100%;
+  height: 100%;
   background-color: var(--bg);
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .avatar {
@@ -87,8 +92,8 @@ p {
 
 textarea {
   text-wrap: wrap;
-  height: 65px;
-  width: 273px;
+  line-height: 1rem;
+  height: 75px;
 }
 
 label {
@@ -100,6 +105,10 @@ label {
 
 label > p {
   text-align: end;
+}
+
+button:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
 
 .button-rectangle {
@@ -166,8 +175,8 @@ label > p {
 .single-card {
   display: grid;
   grid-template-areas: "topic date" "title title" "author ." "img img" "body body" "votes votes";
-  height: fit-content;
-  width: 80vw;
+  height: max-content;
+  width: 90vw;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
   margin: 20px auto;
@@ -203,31 +212,16 @@ label > p {
 
 .single-votes {
   grid-area: votes;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 1.5em;
 }
 
 .small-img {
   width: 100%;
   height: 100%;
   border: 1px solid var(--blue);
-}
-
-.comment-card {
-  display: grid;
-  grid-template-areas: "author date" "body body" "votes votes";
-  background-color: var(--bg-con);
-  border: 2px solid var(--blue);
-  height: max-content;
-  width: 80vw;
-  margin: 20px 20px 20px 20px;
-  border-radius: 8px;
-  padding: 5px 10px;
-}
-.cc-date {
-  grid-area: date;
-  text-align: end;
-}
-.cc-body {
-  grid-area: body;
 }
 
 .comment-card {
@@ -245,9 +239,11 @@ label > p {
 .cc-author {
   grid-area: author;
 }
+
 .cc-date {
   grid-area: date;
-  text-align: end;
+  width: max-content;
+  justify-self: end;
 }
 .cc-body {
   grid-area: body;
@@ -258,16 +254,15 @@ label > p {
 
 .new-comment {
   display: grid;
+  grid-template-rows: max-content auto max-content;
   width: 80vw;
-  margin: 20px auto;
+  margin: auto;
   border-radius: 8px;
   padding: 5px 10px;
 }
 
 .new-comment > button {
   display: flex;
-  min-width: 200px;
-  max-width: 300px;
   justify-content: center;
 }
 
@@ -275,6 +270,7 @@ label > p {
   opacity: 0.8;
   pointer-events: none;
 }
+
 .no-display {
   display: none;
 }
@@ -285,7 +281,8 @@ label > p {
 
 .delete-button {
   background-color: var(--red);
-  font-size: 40px;
+  font-size: 30px;
+  padding-top: 7px;
 }
 
 .topic-card {
@@ -325,4 +322,28 @@ label > p {
 .dropdown-topic a:hover {
   background-color: var(--green);
   transform: scale(1.2);
+}
+
+.error-page {
+  display: grid;
+  grid-template-rows: max-content fit-content auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.error-icon {
+  font-size: 150px;
+  color: red;
+  margin: 0 auto;
+}
+
+.error-page > a > button {
+  background-color: var(--blue);
+  color: White;
+  font-size: 24px;
+  font-weight: 900;
+  border: 0;
+  border-radius: 8px;
+  margin: auto;
+  padding: 20px;
 }
