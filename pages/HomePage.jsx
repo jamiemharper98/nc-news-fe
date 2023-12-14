@@ -8,8 +8,6 @@ export default function HomePage() {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-
-
   useEffect(() => {
     getTopics().then((topicData) => {
       setTopics(topicData);
@@ -23,7 +21,12 @@ export default function HomePage() {
     <main className="home-page">
       <Link to="/articles" className="no-underline">
         <button className="button-rectangle">
-          All Articles <img src={rightArrow} className="arrow" />
+          All Articles{" "}
+          <img
+            src={rightArrow}
+            className="arrow"
+            alt="An Arrow pointing to the right"
+          />
         </button>
       </Link>
 

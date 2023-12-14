@@ -6,9 +6,6 @@ export default function Navigation() {
       <Link to="/" className="no-underline">
         <h1 className="logo">NC News</h1>
       </Link>
-
-      {/* <button>Create new article</button>
-      <p>Profile</p> */}
     </header>
   );
 }

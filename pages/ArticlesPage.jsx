@@ -76,18 +76,12 @@ export default function ArticlesPage() {
         <DropDownTopics topics={topics} setQuery={setQuery} query={query} />
         <DropDownSort setQuery={setQuery} query={query} />
         <label>
-          <button onClick={changeOrder}>
-            {query.order === "desc" ? "Descending" : "Ascending"}
-          </button>
+          <button onClick={changeOrder}>{query.order === "desc" ? "Descending" : "Ascending"}</button>
         </label>
       </section>
       <p className={`${queryError || "no-display"}`}>An Error has occured with your query. Please try again later!</p>
       {articles.listOfArticles?.map((article) => {
-        return (
-          <Link to={`/articles/a/${article.article_id}`} className="no-underline" key={article.article_id}>
-            <ArticleCard article={article} />
-          </Link>
-        );
+        return <ArticleCard article={article} key={article.article_id} />;
       })}
       <p className="page-count">
         Page {query.p} of {Math.ceil(articles.articleCount / articles.listOfArticles?.length)}
