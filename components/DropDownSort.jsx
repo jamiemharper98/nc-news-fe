@@ -15,7 +15,10 @@ export default function DropDownSort(props) {
   }
   return (
     <label>
-      <DropdownButton id="dropdown-basic-button" title="Choose sort criteria" className="dropdown-topic">
+      <DropdownButton
+        id="dropdown-basic-button"
+        title={SortCriteria.find((sort) => sort.id === props.query.sort_by)?.text || "Date of publish"}
+      >
         {SortCriteria.map((sort) => {
           return (
             <Dropdown.Item id={sort.id} key={sort.id} onClick={changeSort}>
@@ -24,7 +27,6 @@ export default function DropDownSort(props) {
           );
         })}
       </DropdownButton>
-      <p>{SortCriteria.find((sort) => sort.id === props.query.sort_by)?.text || "Date of publish"}</p>
     </label>
   );
 }

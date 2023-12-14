@@ -4,11 +4,13 @@ import { getArticleById, getCommentsByArticleId } from "../api/api";
 import SingleArticleCard from "../components/SingleArticleCard";
 import CommentCard from "../components/CommentCard";
 import AddComment from "../components/AddComment";
+import ErrorPage from "./ErrorPage";
 
 export default function SingleArticlePage() {
   const { article_id } = useParams();
   const [currArticle, setCurrArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [noArticle, setNoArticle] = useState(null);
   const [comments, setComments] = useState([]);
   const [deleteError, setDeleteError] = useState(false);
   const currentUser = "jessjelly";
@@ -17,18 +19,20 @@ export default function SingleArticlePage() {
     getArticleById(article_id)
       .then((data) => {
         setCurrArticle(data);
-        setIsLoading(false);
+        setNoArticle(false);
         return getCommentsByArticleId(article_id);
       })
-      .then((commentData) => {
-        setComments(commentData);
-      });
+      .then((commentData) => setComments(commentData))
+      .catch((err) => setNoArticle(err))
+      .finally(() => setIsLoading(false));
   }, []);
 
   if (isLoading) return <h2>Loading...</h2>;
 
+  if (noArticle) return <ErrorPage err={noArticle} />;
+
   return (
-    <>
+    <section className="single-article-page">
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
       <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} />
@@ -47,6 +51,6 @@ export default function SingleArticlePage() {
           />
         );
       })}
-    </>
+    </section>
   );
 }
