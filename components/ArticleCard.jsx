@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 dayjs.extend(relativeTime);
 
 export default function ArticleCard({ article, setQuery, setIsLoading }) {
