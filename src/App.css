@@ -21,18 +21,22 @@ body {
 .nav {
   border-bottom: 2px solid black;
   background-color: var(--blue);
+  align-content: center;
   color: var(--text);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  height: max-content;
-  min-height: 5vw;
+  min-height: 4vw;
 }
 
 .logo {
   color: var(--text);
   font-weight: 900;
-  margin: 10px;
+  height: 100%;
+  margin-bottom: 0;
+  @media only screen and (min-width: 550px) {
+    margin-left: 10px;
+  }
 }
 
 main {
@@ -252,7 +256,7 @@ button:hover {
   width: 90vw;
   background-color: var(--bg-con);
   border: 2px solid var(--blue);
-  margin: 20px auto;
+  margin: 30px auto 20px auto;
   border-radius: 8px;
   padding: 5px 10px;
   @media only screen and (min-width: 800px) {
@@ -288,9 +292,11 @@ button:hover {
 
 .single-votes {
   grid-area: votes;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 60px auto;
   margin: 0 auto;
   align-items: center;
+  text-align: center;
   font-size: 1.5em;
 }
 
@@ -340,7 +346,7 @@ button:hover {
   background-color: var(--red);
   font-size: 30px;
   padding-top: 7px;
-  margin: 10px auto;
+  margin: 10px 40px 10px auto;
   width: 60px;
   border: 1px solid transparent;
   border-radius: 100%;
@@ -391,13 +397,32 @@ button:hover {
   margin: 10px 10px;
   border-radius: 12px;
   background-color: var(--bg-con);
-  max-width: 800px;
+  width: 90vw;
   @media screen and (min-width: 800px) {
     margin: 10px auto;
+    max-width: 800px;
   }
 }
 
-.topic-card > h2 {
+.all-articles {
+  width: fit-content;
+  margin: 0 auto 10px auto;
+}
+
+.all-articles > button {
+  display: grid;
+  grid-template-columns: max-content 50px;
+  padding: 12px 12px;
+  background-color: var(--green);
+  border: 1px solid var(--blue);
+  color: var(--text);
+  font-weight: 900;
+  font-size: 22px;
+  border-radius: 20px;
+  width: 180px;
+}
+
+.topic-card > section > h2 {
   text-align: center;
   text-decoration: underline;
 }

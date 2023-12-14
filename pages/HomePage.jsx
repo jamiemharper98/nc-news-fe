@@ -19,8 +19,8 @@ export default function HomePage() {
 
   return (
     <main className="home-page">
-      <Link to="/articles" className="no-underline">
-        <button className="button-rectangle">
+      <Link to="/articles" className="no-underline all-articles">
+        <button>
           All Articles{" "}
           <img
             src={rightArrow}

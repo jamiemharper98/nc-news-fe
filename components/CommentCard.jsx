@@ -39,7 +39,7 @@ export default function CommentCard({ comment, currentUser, setComments, i, setD
       <p id="cc-date">{formatDate(dayjs().to(dayjs(comment.created_at)))}</p>
       <p id="cc-body">{comment.body}</p>
 
-      <label className="single-votes">
+      <section className="single-votes">
         <button className="single-article-vote red" name="downvote">
           <img src={downArrow} className="arrow-down" name="downvote" alt="Downvote button" />
         </button>
@@ -47,7 +47,7 @@ export default function CommentCard({ comment, currentUser, setComments, i, setD
         <button className="single-article-vote" name="upvote">
           <img src={upArrow} className="arrow-up" name="upvote" alt="Upvote button" />
         </button>
-      </label>
+      </section>
       {comment.author !== currentUser ? null : (
         <button
           className={`delete-button`}
