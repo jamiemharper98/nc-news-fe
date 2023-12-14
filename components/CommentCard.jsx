@@ -1,7 +1,7 @@
 import upArrow from "../assets/icons/arrow-up.svg";
 import downArrow from "../assets/icons/arrow-down.svg";
 import dayjs from "dayjs";
-import * as relativeTime from "dayjs/plugin/relativeTime";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { deleteCommentByCommentId } from "../api/api";
 dayjs.extend(relativeTime);
@@ -55,7 +55,7 @@ export default function CommentCard({ comment, currentUser, setComments, i, setD
             deleteComment(comment.comment_id);
           }}
         >
-          <AiTwotoneDelete alt="delete comment"/>
+          <AiTwotoneDelete alt="delete comment" />
         </button>
       )}
     </section>

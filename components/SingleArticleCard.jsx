@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import * as relativeTime from "dayjs/plugin/relativeTime";
+import relativeTime from "dayjs/plugin/relativeTime";
 import upArrow from "../assets/icons/arrow-up.svg";
 import downArrow from "../assets/icons/arrow-down.svg";
 import { changeArticleVotes } from "../api/api";
@@ -53,8 +53,8 @@ export default function SingleArticleCard({ currArticle, setCurrArticle }) {
           <img src={downArrow} className="arrow-down" name="downvote" alt="Downvote button" />
         </button>
         {currArticle.votes}
-        <button className="single-article-vote" name="upvote" onClick={changeVotes} >
-          <img src={upArrow} className="arrow-up" name="upvote" alt="Upvote button"/>
+        <button className="single-article-vote" name="upvote" onClick={changeVotes}>
+          <img src={upArrow} className="arrow-up" name="upvote" alt="Upvote button" />
         </button>
         <p className={failedVote || "no-display"}>Your vote has not gone through!</p>
       </label>
