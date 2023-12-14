@@ -14,7 +14,7 @@ export default function ErrorPage(props) {
           if (e.target.innerText.includes("Articles")) {
             props.setIsLoading(true);
             props.setGetError(null);
-            props.setQuery(props.createQueryFromUrl([]));
+            props.setQuery([]);
           }
           navigate(props.err === "query" ? "/articles" : "/");
         }}

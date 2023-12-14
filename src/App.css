@@ -385,3 +385,7 @@ button:hover {
   margin: auto;
   padding: 20px;
 }
+
+.single-article-page {
+  padding-bottom: 20px;
+}

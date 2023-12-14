@@ -32,7 +32,7 @@ export default function SingleArticlePage() {
   if (noArticle) return <ErrorPage err={noArticle} />;
 
   return (
-    <>
+    <section className="single-article-page">
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
       <h2>{!comments.length ? "No " : ""}Comments</h2>
       <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} />
@@ -51,6 +51,6 @@ export default function SingleArticlePage() {
           />
         );
       })}
-    </>
+    </section>
   );
 }
