@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 import { getArticles, getTopics } from "../api/api";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import DropDownTopics from "../components/DropDownTopics";
 import DropDownSort from "../components/DropDownSort";
 import ErrorPage from "./ErrorPage";
@@ -81,7 +81,9 @@ export default function ArticlesPage() {
       </section>
       <p className={`${queryError || "no-display"}`}>An Error has occured with your query. Please try again later!</p>
       {articles.listOfArticles?.map((article) => {
-        return <ArticleCard article={article} key={article.article_id} />;
+        return (
+          <ArticleCard article={article} key={article.article_id} setQuery={setQuery} setIsLoading={setIsLoading} />
+        );
       })}
       <p className="page-count">
         Page {query.p} of {Math.ceil(articles.articleCount / articles.listOfArticles?.length)}

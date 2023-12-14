@@ -34,8 +34,7 @@ export default function SingleArticlePage() {
   return (
     <section className="single-article-page">
       <SingleArticleCard currArticle={currArticle} setCurrArticle={setCurrArticle} />
-      <h2>{!comments.length ? "No " : ""}Comments</h2>
-      <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} />
+      <AddComment article_id={article_id} setComments={setComments} currentUser={currentUser} comments={comments}/>
       <p className={`${deleteError || "no-display"}`}>
         An Error has occured with the deleting of a comment! Please try again later!
       </p>

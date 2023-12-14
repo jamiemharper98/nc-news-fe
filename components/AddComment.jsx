@@ -40,6 +40,7 @@ export default function AddComment(props) {
 
   return (
     <form onSubmit={createNewComment} className="new-comment">
+      <h2 id="comment-title">{!props.comments.length ? "No " : ""}Comments</h2>
       <label htmlFor="new-comment">Add Comment </label>
       <textarea placeholder="A new comment..." id="new-comment" value={newComment} onChange={validateComment} />
 
