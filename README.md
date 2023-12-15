@@ -1,4 +1,4 @@
-#NC News React App
+# NC News React App
 
 The link to the deployed version of this app is at: https://nc-news-jh.netlify.app/
 
